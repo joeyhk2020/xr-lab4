@@ -4,6 +4,7 @@ from dt_apriltags import Detector
 import numpy as np
 from picamera2 import Picamera2
 from scipy.spatial.transform import Rotation
+import time
 
 
 detector = Detector(
@@ -40,3 +41,5 @@ hand = arena.Box(
 )
 
 picam.start()
+time.sleep(2)
+picam.capture_file("Test.jpg")
