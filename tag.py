@@ -41,5 +41,17 @@ hand = arena.Box(
 )
 
 picam.start()
-time.sleep(2)
-picam.capture_file("Test.jpg")
+time.sleep(0.1)
+picam.capture_file("capture.jpg")
+
+img = cv2.imread(cv2.samples.findFile("capture.jpg"))
+if img is None:
+    print("No capture found :(")
+
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+tags = detector.detect(img_gray, 
+            estimate_tag_pose=False, 
+            camera_params=None, 
+            tag_size=None)
+
+print(tags)
