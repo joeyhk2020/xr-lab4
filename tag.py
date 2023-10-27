@@ -48,10 +48,20 @@ img = cv2.imread(cv2.samples.findFile("capture.jpg"))
 if img is None:
     print("No capture found :(")
 
+mtx_file = open("mtx.txt", "r")
+
+########FILL IN AT HOME########
+cam_mtx = None
+fx = 0
+fy = 0
+cx = 0
+cy = 0
+cam_params = [fx, fy, cx, cy]
+
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 tags = detector.detect(img_gray, 
             estimate_tag_pose=False, 
-            camera_params=None, 
+            camera_params=cam_params, 
             tag_size=None)
 
 print(tags)
