@@ -12,14 +12,14 @@ picam.configure(config)
 time.sleep(0.1)
 
 
-# picam.start()
+picam.start()
 
-# for i in range(0,20):
-#     picam.capture_file("checkerboard/board"+str(i)+".jpg")
-#     print("Capture " + str(i))
-#     # time.sleep(0.5)
+for i in range(0,20):
+    picam.capture_file("checkerboard/board"+str(i)+".jpg")
+    print("Capture " + str(i))
+    time.sleep(5)
 
-# picam.close()
+picam.close()
 
 
 # termination criteria
