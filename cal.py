@@ -17,7 +17,7 @@ picam.start()
 for i in range(0,20):
     picam.capture_file("checkerboard/board"+str(i)+".jpg")
     print("Capture " + str(i))
-    time.sleep(5)
+    time.sleep(2)
 
 picam.close()
 
