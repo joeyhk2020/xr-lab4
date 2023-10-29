@@ -50,7 +50,7 @@ picam.configure(config)
 # if img is None:
 #     print("No capture found :(")
 
-mtx_string = open("mtx.txt", "r").read()
+mtx_string = open("camera_intrinsics.txt", "r").read()
 
 cleaned = mtx_string[1:-1]
 rows = cleaned.split('\n')
