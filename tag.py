@@ -22,7 +22,7 @@ handcam = arena.Entity(
 )
 hand = arena.Box(
     object_id='my-hand',
-    width=.1, height=.1, depth=.1,
+    width=.1, height=.1, depth=2,
     position=(.5,-.5,-.5),
     parent='my-camera'
 )
@@ -92,7 +92,7 @@ def scene_init():
     print("OBJECTS ADDED")
 
 picam.start()
-@scene.run_forever(interval_ms=50)
+@scene.run_forever(interval_ms=100)
 def main():
     picam.capture_file("capture.jpg")
     img = cv2.imread(cv2.samples.findFile("capture.jpg"))
@@ -104,7 +104,7 @@ def main():
     for tag in tags:
         if (tag.tag_id == 1):
             t = tag.pose_t
-            t_arena = arena.Position(-t[0][0], -t[1][0], -t[2][0])
+            t_arena = arena.Position(-t[0][0]+0.5, -t[1][0]-0.5, -t[2][0]-0.5)
 
             R = tag.pose_R
             R_euler = Rotation.from_matrix(R.T).as_euler('zyx', degrees=True)

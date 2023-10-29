@@ -4,6 +4,7 @@ sys.path.append('.')
 import RTIMU
 import os.path
 
+scene = arena.Scene(host="arenaxr.org", scene="453lab4")
 
 SETTINGS_FILE = "RTIMULib"
 
@@ -35,3 +36,17 @@ hand = arena.Box(
 def imuquat2arena(imuquat):
     return ((-imuquat[2], -imuquat[3], imuquat[1], imuquat[0]))
 
+@scene.run_once
+def scene_init():
+
+    scene.add_object(hand)
+
+@scene.run_forever(interval_ms=25)
+def main():
+    imu.IMURead()
+    R_quat = imuquat2arena(imu.getIMUData()['fusionQPose'])
+    hand.update_attributes(rotation=R_quat)
+    scene.update_object(hand)
+    print(R_quat)
+
+scene.run_tasks()
