@@ -81,7 +81,7 @@ def arenaquat_conj(arenaquat):
     return(-arenaquat[0], -arenaquat[1], -arenaquat[2], arenaquat[3])
 
 
-mtx_string = open("mtx.txt", "r").read()
+mtx_string = open("camera_intrinsics.txt", "r").read()
 
 cleaned = mtx_string[1:-1]
 rows = cleaned.split('\n')

@@ -50,7 +50,7 @@ for fname in images:
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 
 print(mtx)
-with open("mtx.txt", "w") as txtfile:
+with open("camera_intrinsics.txt", "w") as txtfile:
     txtfile.write(str(mtx))
 
 
